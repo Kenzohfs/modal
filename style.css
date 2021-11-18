@@ -34,7 +34,6 @@ main {
 
 .modal {
     display: flex;
-    justify-content: center;
     align-items: center;
     flex-direction: column;
     width: 40vw;
@@ -55,7 +54,10 @@ main {
 .botaoDiv {
     width: 80%;
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-end;
+    position: absolute;
+    bottom: 0;
+    margin-bottom: 5%;
 }
 
 .input {
@@ -66,4 +68,24 @@ main {
 .cancelar {
     background-color: rgb(218, 71, 71);
     padding: 10px;
+}
+
+.enviar {
+    background-color: rgb(63, 63, 238);
+    padding: 10px;
+    margin-left: 2%;
+}
+
+button:hover {
+    cursor: pointer;
+}
+
+.alert {
+    padding: 5px;
+    text-align: center;
+    color: white;
+    position: absolute;
+    bottom: 3vh;
+    right: 3vh;
+    width: 10vw;
 }

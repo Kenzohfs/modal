@@ -3,8 +3,6 @@ let divMain = document.createElement('div');
 let botao = document.createElement('button');
 let modal = document.createElement('div');
 
-
-
 divMain.className = 'divMain'
 botao.className = 'botao'
 botao.innerText = 'Cadastre-se'
@@ -16,7 +14,8 @@ main.appendChild(botao);
 //Dentro do modal:
 let titulo = document.createElement('h2');
 titulo.innerText = 'Modal';
-titulo.style.marginBottom = '20px'
+titulo.style.marginBottom = '10%'
+titulo.style.marginTop = '5%'
 modal.appendChild(titulo);
 
 let conteudo = document.createElement('div');
@@ -53,15 +52,69 @@ cancelar.className = 'cancelar'
 cancelar.onclick = fechar;
 cancelar.innerText = 'Cancelar'
 botaoDiv.appendChild(cancelar);
+
+let enviar = document.createElement('button');
+enviar.className = 'enviar';
+enviar.innerText = 'Cadastrar'
+enviar.onclick = cadastrarPessoa;
+botaoDiv.appendChild(enviar);
 //
 
 function abrirModal() {
     main.appendChild(divMain);
     main.appendChild(modal);
+
     divMain.style.opacity = '0.5'
 }
 
 function fechar() {
     main.removeChild(modal);
     main.removeChild(divMain);
+    inputNome.value = '';
+    inputSobrenome.value = '';
+    inputData.value = '';
+}
+
+let cadastrosArray = []
+let cadastrosJson = {}
+
+function alert(codigo) {
+    let alert = document.createElement('div');
+
+    alert.className = 'alert';
+    main.appendChild(alert);
+    main.removeChild(alert);
+
+    if (codigo == 1) {
+        main.appendChild(alert);
+        alert.innerText = 'Todos os campos devem estar preenchidos!';
+        alert.style.backgroundColor = 'red'
+        alert.style.border = '2px solid brown';
+    } else {
+        main.appendChild(alert);
+        alert.style.color = 'green';
+        alert.innerText = 'Cadastrado!'
+    }
+
+}
+
+function cadastrarPessoa() {
+    let nome = inputNome.value;
+    let sobrenome = inputSobrenome.value;
+    let data = inputData.value;
+
+    if (nome == '' || sobrenome == '' || data == '') {
+        alert(1);
+        console.log('oi')
+    } else {
+        let cadastrosJson = {
+            nome: nome,
+            sobrenome: sobrenome,
+            data: data
+        }
+    
+        cadastrosArray.push(cadastrosJson);
+
+        alert(2);
+    }
 }
