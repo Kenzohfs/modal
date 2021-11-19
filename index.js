@@ -131,6 +131,10 @@ let pegarDado
 let i = 0
 
 function tabela() {
+    if (i == 0) {
+        criarTitle();
+    }
+
     let linhaTabela = document.createElement('div');
     let colunaTabelaCodigo = document.createElement('div');
     let colunaTabelaNome = document.createElement('div');
@@ -158,4 +162,31 @@ function tabela() {
     colunaTabelaData.innerText = pegarDado.data;
 
     i++;
+}
+
+function criarTitle() {
+    let linhaTabela = document.createElement('div');
+    let colunaTabelaCodigo = document.createElement('div');
+    let colunaTabelaNome = document.createElement('div');
+    let colunaTabelaSobrenome = document.createElement('div');
+    let colunaTabelaData = document.createElement('div');
+
+    tabelaDiv.className = 'tabelaDiv';
+    linhaTabela.className = 'linhaTabela';
+    colunaTabelaCodigo.className = 'coluna';
+    colunaTabelaNome.className = 'coluna';
+    colunaTabelaSobrenome.className = 'coluna';
+    colunaTabelaData.className = 'coluna';
+
+    tabelaDiv.appendChild(linhaTabela);
+    linhaTabela.appendChild(colunaTabelaCodigo);
+    linhaTabela.appendChild(colunaTabelaNome);
+    linhaTabela.appendChild(colunaTabelaSobrenome);
+    linhaTabela.appendChild(colunaTabelaData);
+
+    colunaTabelaCodigo.innerText = "Codigo";
+    colunaTabelaNome.innerText = "Nome";
+    colunaTabelaSobrenome.innerText = "Sobrenome";
+    colunaTabelaData.innerText = "Data";
+
 }
