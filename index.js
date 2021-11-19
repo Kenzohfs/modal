@@ -89,13 +89,18 @@ function alert(codigo) {
         main.appendChild(alert);
         alert.innerText = 'Todos os campos devem estar preenchidos!';
         alert.style.backgroundColor = 'red'
-        alert.style.border = '2px solid brown';
+        alert.style.border = '2px solid rgb(141, 15, 15)';
     } else {
         main.appendChild(alert);
-        alert.style.color = 'green';
+        alert.style.backgroundColor = 'rgb(20, 161, 20)';
+        alert.style.border = '2px solid green';
         alert.innerText = 'Cadastrado!'
+
+        fechar();
+        tabela();
     }
 
+    setTimeout(function () { main.removeChild(alert) }, 3000);
 }
 
 function cadastrarPessoa() {
@@ -112,9 +117,44 @@ function cadastrarPessoa() {
             sobrenome: sobrenome,
             data: data
         }
-    
+
         cadastrosArray.push(cadastrosJson);
 
         alert(2);
     }
+}
+
+let tabelaDiv = document.createElement('div');
+
+main.appendChild(tabelaDiv);
+
+let pegarDado
+let i = 0
+
+let tabelaPassada;
+
+function tabela() {
+    let linhaTabela = document.createElement('div');
+    let colunaTabelaNome = document.createElement('div');
+    let colunaTabelaSobrenome = document.createElement('div');
+    let colunaTabelaData = document.createElement('div');
+
+    tabelaDiv.className = 'tabelaDiv';
+    linhaTabela.className = 'linhaTabela';
+    colunaTabelaNome.className = 'coluna'
+    colunaTabelaSobrenome.className = 'coluna'
+    colunaTabelaData.className = 'coluna'
+
+    tabelaDiv.appendChild(linhaTabela);
+    linhaTabela.appendChild(colunaTabelaNome);
+    linhaTabela.appendChild(colunaTabelaSobrenome);
+    linhaTabela.appendChild(colunaTabelaData);
+
+    pegarDado = cadastrosArray[i];
+
+    colunaTabelaNome.innerText = pegarDado.nome;
+    colunaTabelaSobrenome.innerText = pegarDado.sobrenome;
+    colunaTabelaData.innerText = pegarDado.data;
+
+    i++;
 }

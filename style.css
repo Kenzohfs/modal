@@ -89,3 +89,21 @@ button:hover {
     right: 3vh;
     width: 10vw;
 }
+
+.tabelaDiv {
+    position: absolute;
+    top: 3vh;
+    left: 3vh;
+    min-width: 20vw;
+}
+
+.linhaTabela {
+    display: flex;
+    min-width: 20vw;
+}
+
+.coluna {
+    padding: 10px;
+    border: 1px solid black;
+    min-width: 33%;
+}
