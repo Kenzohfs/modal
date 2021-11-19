@@ -1,5 +1,6 @@
 * {
     margin: 0;
+    box-sizing: border-box;
 }
 
 main {
@@ -27,6 +28,9 @@ main {
 }
 
 .botao {
+    position: absolute;
+    top: 3vh;
+    right: 3vh;
     padding: 10px;
     border-radius: 5px;
     background-color: gray;
@@ -94,16 +98,17 @@ button:hover {
     position: absolute;
     top: 3vh;
     left: 3vh;
-    min-width: 20vw;
+    min-width: 40vw;
 }
 
 .linhaTabela {
     display: flex;
-    min-width: 20vw;
+    min-width: 40vw;
 }
 
 .coluna {
     padding: 10px;
     border: 1px solid black;
-    min-width: 33%;
+    min-width: 25%;
+    text-align: center;
 }
