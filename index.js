@@ -125,41 +125,47 @@ function cadastrarPessoa() {
 
 let tabelaDiv = document.createElement('div');
 
-main.appendChild(tabelaDiv);
-
 let pegarDado
 let i = 0
+let b = 0
 
 function tabela() {
     if (i == 0) {
         criarTitle();
+    } 
+    if (i != 0) {
+        main.removeChild(tabelaDiv);
     }
 
-    let linhaTabela = document.createElement('div');
-    let colunaTabelaCodigo = document.createElement('div');
-    let colunaTabelaNome = document.createElement('div');
-    let colunaTabelaSobrenome = document.createElement('div');
-    let colunaTabelaData = document.createElement('div');
+    cadastrosArray.forEach(function (e) {
+        main.appendChild(tabelaDiv);
+        let linhaTabela = document.createElement('div');
+        let colunaTabelaCodigo = document.createElement('div');
+        let colunaTabelaNome = document.createElement('div');
+        let colunaTabelaSobrenome = document.createElement('div');
+        let colunaTabelaData = document.createElement('div');
 
-    tabelaDiv.className = 'tabelaDiv';
-    linhaTabela.className = 'linhaTabela';
-    colunaTabelaCodigo.className = 'coluna';
-    colunaTabelaNome.className = 'coluna';
-    colunaTabelaSobrenome.className = 'coluna';
-    colunaTabelaData.className = 'coluna';
+        tabelaDiv.className = 'tabelaDiv';
+        linhaTabela.className = 'linhaTabela';
+        colunaTabelaCodigo.className = 'coluna';
+        colunaTabelaNome.className = 'coluna';
+        colunaTabelaSobrenome.className = 'coluna';
+        colunaTabelaData.className = 'coluna';
 
-    tabelaDiv.appendChild(linhaTabela);
-    linhaTabela.appendChild(colunaTabelaCodigo);
-    linhaTabela.appendChild(colunaTabelaNome);
-    linhaTabela.appendChild(colunaTabelaSobrenome);
-    linhaTabela.appendChild(colunaTabelaData);
+        tabelaDiv.appendChild(linhaTabela);
+        linhaTabela.appendChild(colunaTabelaCodigo);
+        linhaTabela.appendChild(colunaTabelaNome);
+        linhaTabela.appendChild(colunaTabelaSobrenome);
+        linhaTabela.appendChild(colunaTabelaData);
 
-    pegarDado = cadastrosArray[i];
+        pegarDado = cadastrosArray[b];
 
-    colunaTabelaCodigo.innerText = (i + 1);
-    colunaTabelaNome.innerText = pegarDado.nome;
-    colunaTabelaSobrenome.innerText = pegarDado.sobrenome;
-    colunaTabelaData.innerText = pegarDado.data;
+        colunaTabelaCodigo.innerText = (b + 1);
+        colunaTabelaNome.innerText = pegarDado.nome;
+        colunaTabelaSobrenome.innerText = pegarDado.sobrenome;
+        colunaTabelaData.innerText = pegarDado.data;
+        b++
+    });
 
     i++;
 }
@@ -189,4 +195,9 @@ function criarTitle() {
     colunaTabelaSobrenome.innerText = "Sobrenome";
     colunaTabelaData.innerText = "Data";
 
+    linhaTabela.style.fontWeight = 'bold';
 }
+
+cadastrosArray.forEach(function (e) {
+    console.log(e)
+});
