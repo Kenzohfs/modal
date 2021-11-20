@@ -97,7 +97,7 @@ function alert(codigo) {
         alert.innerText = 'Cadastrado!'
 
         fechar();
-        tabela();
+        montarLinha(montarTabela());
     }
 
     setTimeout(function () { main.removeChild(alert) }, 3000);
@@ -127,77 +127,53 @@ let tabelaDiv = document.createElement('div');
 
 let pegarDado
 let i = 0
-let b = 0
 
-function tabela() {
-    if (i == 0) {
-        criarTitle();
-    } 
-    if (i != 0) {
-        main.removeChild(tabelaDiv);
-    }
-
+function montarLinha(tabela) {
     cadastrosArray.forEach(function (e) {
-        main.appendChild(tabelaDiv);
-        let linhaTabela = document.createElement('div');
-        let colunaTabelaCodigo = document.createElement('div');
-        let colunaTabelaNome = document.createElement('div');
-        let colunaTabelaSobrenome = document.createElement('div');
-        let colunaTabelaData = document.createElement('div');
+        let linhaDado = document.createElement('tr');
 
-        tabelaDiv.className = 'tabelaDiv';
-        linhaTabela.className = 'linhaTabela';
-        colunaTabelaCodigo.className = 'coluna';
-        colunaTabelaNome.className = 'coluna';
-        colunaTabelaSobrenome.className = 'coluna';
-        colunaTabelaData.className = 'coluna';
+        let colunaNome = document.createElement('td');
+        let colunaSobrenome = document.createElement('td');
+        let colunaData = document.createElement('td');
 
-        tabelaDiv.appendChild(linhaTabela);
-        linhaTabela.appendChild(colunaTabelaCodigo);
-        linhaTabela.appendChild(colunaTabelaNome);
-        linhaTabela.appendChild(colunaTabelaSobrenome);
-        linhaTabela.appendChild(colunaTabelaData);
+        tabela.appendChild(linhaDado);
 
-        pegarDado = cadastrosArray[b];
+        colunaNome.innerText = e.nome;
+        colunaSobrenome.innerText = e.sobrenome
+        colunaData.innerText = e.data
 
-        colunaTabelaCodigo.innerText = (b + 1);
-        colunaTabelaNome.innerText = pegarDado.nome;
-        colunaTabelaSobrenome.innerText = pegarDado.sobrenome;
-        colunaTabelaData.innerText = pegarDado.data;
-        b++
+        linhaDado.appendChild(colunaNome);
+        linhaDado.appendChild(colunaSobrenome);
+        linhaDado.appendChild(colunaData);
     });
 
-    i++;
+    document.querySelector('table').style.textAlign = 'center';
 }
 
-function criarTitle() {
-    let linhaTabela = document.createElement('div');
-    let colunaTabelaCodigo = document.createElement('div');
-    let colunaTabelaNome = document.createElement('div');
-    let colunaTabelaSobrenome = document.createElement('div');
-    let colunaTabelaData = document.createElement('div');
+function montarTabela() {
+    let tabelaAtual = document.querySelector('table');
 
-    tabelaDiv.className = 'tabelaDiv';
-    linhaTabela.className = 'linhaTabela';
-    colunaTabelaCodigo.className = 'coluna';
-    colunaTabelaNome.className = 'coluna';
-    colunaTabelaSobrenome.className = 'coluna';
-    colunaTabelaData.className = 'coluna';
+    if (tabelaAtual) {
+        tabelaAtual.remove();
+    }
 
-    tabelaDiv.appendChild(linhaTabela);
-    linhaTabela.appendChild(colunaTabelaCodigo);
-    linhaTabela.appendChild(colunaTabelaNome);
-    linhaTabela.appendChild(colunaTabelaSobrenome);
-    linhaTabela.appendChild(colunaTabelaData);
+    let tabela = document.createElement('table');
 
-    colunaTabelaCodigo.innerText = "Codigo";
-    colunaTabelaNome.innerText = "Nome";
-    colunaTabelaSobrenome.innerText = "Sobrenome";
-    colunaTabelaData.innerText = "Data";
+    let linha = document.createElement('tr');
+    let colunaNomeHeader = document.createElement('th')
+    let colunaSobrenomeHeader = document.createElement('th')
+    let colunaDataHeader = document.createElement('th')
 
-    linhaTabela.style.fontWeight = 'bold';
+    colunaNomeHeader.innerText = 'Nome';
+    colunaSobrenomeHeader.innerText = 'Sobrenome'
+    colunaDataHeader.innerText = 'Data'
+
+    linha.appendChild(colunaNomeHeader);
+    linha.appendChild(colunaSobrenomeHeader);
+    linha.appendChild(colunaDataHeader);
+
+    main.appendChild(tabela);
+    tabela.appendChild(linha);
+
+    return tabela;
 }
-
-cadastrosArray.forEach(function (e) {
-    console.log(e)
-});
