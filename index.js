@@ -13,7 +13,7 @@ main.appendChild(botao);
 
 //Dentro do modal:
 let titulo = document.createElement('h2');
-titulo.innerText = 'Modal';
+titulo.innerText = 'Cadastro';
 titulo.style.marginBottom = '10%'
 titulo.style.marginTop = '5%'
 modal.appendChild(titulo);
@@ -39,7 +39,7 @@ inputData.type = 'date';
 
 inputNome.className = 'input';
 inputSobrenome.className = 'input';
-inputData.className = ''
+inputData.className = 'input'
 
 conteudo.appendChild(inputNome);
 conteudo.appendChild(inputSobrenome);
@@ -164,6 +164,10 @@ function montarTabela() {
     colunaNomeHeader.innerText = 'Nome';
     colunaSobrenomeHeader.innerText = 'Sobrenome'
     colunaDataHeader.innerText = 'Data'
+
+    colunaNomeHeader.style.fontSize = '18px'
+    colunaSobrenomeHeader.style.fontSize = '18px'
+    colunaDataHeader.style.fontSize = '18px'
 
     linha.appendChild(colunaNomeHeader);
     linha.appendChild(colunaSobrenomeHeader);
