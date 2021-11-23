@@ -123,6 +123,8 @@ function cadastrarPessoa() {
     }
 }
 
+//Badiuor esteve aqui
+
 let tabelaDiv = document.createElement('div');
 
 function montarLinha(tabela) {
