@@ -125,9 +125,6 @@ function cadastrarPessoa() {
 
 let tabelaDiv = document.createElement('div');
 
-let pegarDado
-let i = 0
-
 function montarLinha(tabela) {
     cadastrosArray.forEach(function (e) {
         let linhaDado = document.createElement('tr');
